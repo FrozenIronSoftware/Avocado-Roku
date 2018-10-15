@@ -1,0 +1,16 @@
+The Avocado Roku app may use or contain portions of the following assets, subject to the below licenses.
+
+[Loading Icon] 
+
+Created by Freepik from flaticon.com is licensed by CC 3.0 BY
+
+[Material design icons]
+
+Apache License 2.0
+
+[Comfortaa Font]
+
+Copyright 2011 The Comfortaa Project Authors (aajohan@gmail.com), with Reserved Font Name "Comfortaa".
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL

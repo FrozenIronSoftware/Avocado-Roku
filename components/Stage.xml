@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Stage" extends="Group">
+
+	<interface>
+		<!-- A stage MUST initialize and be ready for presentation
+			 when this is called. At the end of initialization, the stage
+			 MUST set the ready field to true. An array may be passed. -->
+		<field id="start" type="array" alwaysNotify="true" />
+		<!-- A stage MUST stop all background activity that may produce
+			 GUI elements (e.g. dialogs). -->
+		<field id="stop" type="boolean" alwaysNotify="true" />
+		<!-- Set to true when the stage has been initialized. See start. -->
+		<field id="ready" type="boolean" alwaysNotify="true" />
+		<!-- A stage MAY set this to a dialog node when a dialog is expected to
+			 be displayed. -->
+		<field id="dialog" type="node" alwaysNotify="true" />
+		<!-- This may be set set if there is authentication data that the
+			 stage should use for API calls. If this is set to invalid,
+			 the stage should assume that no login details are available.
+			 Format: {
+			 	token: "abc123", ' Opaque string
+			 	account_level: 0, ' Specifies the level of account.
+			 				     ' 0 anonymous / no account (with ads),
+			 				     ' 1: free (with ads),
+			 				     ' 2: paid (no ads)
+	            email: "foo@bar.org", ' User email
+                id: 0 ' User ID
+			 } -->
+		<field id="auth" type="assocarray" alwaysNotify="true" />
+		<!-- A stage MAY set this indicate that it has finished
+			 performing actions and the active stage should be set to the
+			 previous stage. If the array is not invalid the parameters can
+			 be used to determine the stage to enter. -->
+		<field id="back" type="array" alwaysNotify="true" />
+	</interface>
+
+</component>

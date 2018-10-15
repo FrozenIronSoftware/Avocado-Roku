@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<component name="MediaScreen" extends="Stage">
+
+	<children>
+
+		<Poster
+	    	id="background"
+	    	uri=""
+	    	width="1280"
+	    	height="720"
+	    	loadDisplayMode="scaleToFill" />
+
+		<Overhang
+			id="header"
+			color="0x19171c"
+	    	showClock="true"
+	    	clockColor="0xffffff"
+	    	logoUri="pkg:/locale/default/images/overhang_logo_hd.png"
+	    	title=""
+	    	titleColor="0xffffff" />
+
+	    <ScrollingLabel
+	    	id="episode_title"
+	    	color="0xffffff"
+			font="font:LargeBoldSystemFont"
+			horizAlign="left"
+			vertAlign="top"
+			height="50" />
+
+	    <ScrollingLabel
+	    	id="podcast_title"
+	    	color="0xffffff"
+			font="font:SmallSystemFont"
+			horizAlign="left"
+			vertAlign="top"
+			height="50" />
+
+		<Video
+			id="video" />
+
+		<Audio
+			id="audio" />
+
+		<Poster
+			id="image"
+			width="1280"
+			height="720"
+			loadDisplayMode="scaleToFit"
+			loadingBitmapUri="pkg:/locale/default/images/poster_loading.png"
+    		failedBitmapUri="pkg:/locale/default/images/poster_error.png" />
+
+		<Rectangle
+    		id="ad_container"
+    		color="0x000000"
+    		visible="false"
+    		width="1280"
+    		height="720">
+    		<Poster
+		    	id="ad_container_background"
+		    	uri="pkg:/locale/default/images/splash_hd.png"
+		    	width="1280"
+		    	height="720"
+		    	loadDisplayMode="scaleToFill" />
+    	</Rectangle>
+
+        <AvocadoApi
+	    	id="avocado_api" />
+
+	    <Dialog
+	   		id="dialog"
+	   		visible="false" />
+
+	   	<Registry
+	   		id="registry" />
+
+	   	<Ads
+	   		id="ads" />
+
+	</children>
+
+	<script type="text/brightscript" uri="pkg:/components/MediaScreen.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Util.brs" />
+
+</component>

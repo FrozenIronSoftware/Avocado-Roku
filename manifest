@@ -1,0 +1,14 @@
+title=Avocado
+major_version=1
+minor_version=0
+build_version=526
+mm_icon_focus_hd=pkg:/locale/default/images/channel_poster_hd.png
+mm_icon_focus_sd=pkg:/locale/default/images/channel_poster_sd.png
+bs_libs_required=roku_ads_lib
+splash_screen_fhd=pkg:/locale/default/images/splash_fhd.png
+splash_screen_hd=pkg:/locale/default/images/splash_hd.png
+splash_screen_sd=pkg:/locale/default/images/splash_sd.png
+splash_color=#5ea341
+splash_min_time=0
+screensaver_private=1
+ui_resolutions=hd

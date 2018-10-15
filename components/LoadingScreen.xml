@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<component name="LoadingScreen" extends="Stage">
+	
+	<children>
+		
+		<Poster
+	    	id="loading_image"
+	    	uri="pkg:/locale/default/images/splash_hd.png"
+	    	width="1280"
+	    	height="720"
+	    	loadDisplayMode="scaleToFill" />
+	    	
+	    <Label
+	    	id="loading_text"
+	    	text=""
+	    	color="0xffffff"
+	    	font="font:MediumBoldSystemFont"
+	    	horizAlign="center"
+	    	vertAlign="top"
+	    	width="1280"
+	    	height="30"
+	    	translation="[0,600]" />
+	    	
+	</children>
+	
+	<script type="text/brightscript" uri="pkg:/components/LoadingScreen.brs" />
+	
+</component>

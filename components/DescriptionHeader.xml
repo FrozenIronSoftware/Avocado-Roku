@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<component name="DescriptionHeader" extends="Group">
+
+	<children>
+	
+		<Label
+			id="title"
+			color="0xffffff"
+			font="font:LargeBoldSystemFont"
+			horizAlign="left"
+			vertAlign="top"
+			wrap="false" />
+			
+		<Label
+			id="description"
+			color="0xffffff"
+			font="font:SmallSystemFont"
+			horizAlign="left"
+			vertAlign="top"
+			wrap="true" />
+		
+	</children>
+	
+	<interface>
+		
+		<field id="width" type="float" alwaysNotify="true" />
+		<field id="height" type="float" alwaysNotify="true" />
+		<field id="title" type="string" alwaysNotify="true" />
+		<field id="description" type="string" alwaysNotify="true" />
+		
+	</interface>
+	
+	<script type="text/brightscript" uri="pkg:/components/DescriptionHeader.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Util.brs" />
+
+</component>

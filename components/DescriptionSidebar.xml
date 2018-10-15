@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<component name="DescriptionSidebar" extends="Group">
+
+	<children>
+	
+		<ScrollingLabel
+			id="title"
+			color="0xffffff"
+			font="font:MediumBoldSystemFont"
+			horizAlign="center"
+			vertAlign="top" />
+			
+		<Label
+			id="description"
+			color="0xffffff"
+			font="font:SmallSystemFont"
+			horizAlign="left"
+			vertAlign="top"
+			wrap="true" />
+		
+		<ScrollingLabel
+			id="author"
+			color="0xffffff"
+			font="font:SmallBoldSystemFont"
+			horizAlign="center"
+			vertAlign="top" />
+			
+		<Poster
+			id="artwork"
+			loadingBitmapUri="pkg:/locale/default/images/poster_loading.png"
+    		failedBitmapUri="pkg:/locale/default/images/poster_error.png" />
+	
+	</children>
+
+	<interface>
+		
+		<field id="width" type="float" alwaysNotify="true" />
+		<field id="height" type="float" alwaysNotify="true" />
+		<field id="title" type="string" alwaysNotify="true" />
+		<field id="description" type="string" alwaysNotify="true" />
+		<field id="author" type="string" alwaysNotify="true" />
+		<field id="artwork" type="string" alwaysNotify="true" />
+		
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/DescriptionSidebar.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Util.brs" />
+
+</component>

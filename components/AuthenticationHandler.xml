@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="AuthenticationHandler" extends="Stage">
+
+	<children>
+
+		<Registry
+	    	id="registry" />
+
+	    <AvocadoApi
+	    	id="avocado_api" />
+
+	    <Dialog
+	   		id="dialog"
+	   		visible="false" />
+
+	</children>
+
+	<interface>
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/AuthenticationHandler.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Util.brs" />
+
+</component>

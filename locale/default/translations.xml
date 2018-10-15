@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file datatype="x-brs" source-language="en-US" target-language="en-US">
+        <body>
+            <trans-unit id="0">
+            	<source>title_loading</source>
+            	<target>Loading</target>
+           	</trans-unit>
+           	<trans-unit id="1">
+            	<source>error_api_fail</source>
+            	<target>Fail to connect to the API server.</target>
+           	</trans-unit>
+           	<trans-unit id="2">
+            	<source>title_error</source>
+            	<target>Error</target>
+           	</trans-unit>
+           	<trans-unit id="3">
+            	<source>title_error_code</source>
+            	<target>Code</target>
+           	</trans-unit>
+           	<trans-unit id="4">
+            	<source>button_confirm</source>
+            	<target>Confirm</target>
+           	</trans-unit>
+           	<trans-unit id="5">
+            	<source>message_exit_confirm</source>
+            	<target>Exit Avocado?</target>
+           	</trans-unit>
+           	<trans-unit id="6">
+            	<source>button_cancel</source>
+            	<target>Cancel</target>
+           	</trans-unit>
+           	<trans-unit id="7">
+            	<source>title_exit_confirm</source>
+            	<target>Exit</target>
+           	</trans-unit>
+           	<trans-unit id="8">
+            	<source>title_search</source>
+            	<target>Search</target>
+           	</trans-unit>
+           	<trans-unit id="9">
+            	<source>message_search</source>
+            	<target>Search for podcasts</target>
+           	</trans-unit>
+           	<trans-unit id="10">
+            	<source>title_settings</source>
+            	<target>Settings</target>
+           	</trans-unit>
+           	<trans-unit id="11">
+            	<source>message_settings</source>
+            	<target>Change Avocado's options</target>
+           	</trans-unit>
+           	<trans-unit id="12">
+            	<source>title_favorites</source>
+            	<target>Favorites</target>
+           	</trans-unit>
+           	<trans-unit id="13">
+            	<source>title_recent</source>
+            	<target>Recently Viewed</target>
+           	</trans-unit>
+           	<trans-unit id="14">
+            	<source>title_sign_in</source>
+            	<target>Sign In</target>
+           	</trans-unit>
+           	<trans-unit id="15">
+            	<source>message_sign_in</source>
+            	<target>Sign in to Avocado</target>
+           	</trans-unit>
+           	<trans-unit id="16">
+            	<source>message_no_data</source>
+            	<target>No data</target>
+           	</trans-unit>
+           	<trans-unit id="17">
+            	<source>message_loading</source>
+            	<target>Loading</target>
+           	</trans-unit>
+        </body>
+    </file>
+</xliff>

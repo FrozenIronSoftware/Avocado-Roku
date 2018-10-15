@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<component name="Avocado" extends="Scene">
+
+	<children>
+	    	
+	    <HomeScreen
+	    	id="home_screen"
+	    	visible="false" />
+	    	
+	    <LoadingScreen 
+	    	id="loading_screen" />
+	    	
+	    <SelectionScreen
+	    	id="selection_screen" />
+	    	
+	    <AuthenticationHandler
+	    	id="authentication_handler" />
+	    	
+	    <MediaScreen
+	    	id="media_screen" />
+
+	</children>
+	
+	<interface>
+		
+		<field id="do_exit" type="boolean" alwaysNotify="true" />
+		
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/source/Avocado.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Util.brs" />
+	
+</component>

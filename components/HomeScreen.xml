@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<component name="HomeScreen" extends="Stage">
+
+	<children>
+
+		<!--<Overhang
+			id="header"
+			color="0x19171c"
+	    	showClock="true"
+	    	clockColor="0xffffff"
+	    	logoUri="pkg:/locale/default/images/overhang_logo_hd.png"
+	    	title=""
+	    	titleColor="0xffffff" />-->
+
+	    <RowList
+	    	id="row_list"
+	    	translation="[90,210]"
+	    	itemComponentName="RowListItem"
+	    	itemSize="[1100,200]"
+	    	itemSpacing="[0,60]"
+	    	numRows="2"
+	    	rowItemSize="[[200,200]]"
+	    	rowItemSpacing="[[30,0]]"
+	    	rowLabelOffset="[[0,15]]"
+	    	showRowLabel="[false, true]"
+	    	showRowCounter="[false, true]"
+	    	rowFocusAnimationStyle="fixedFocusWrap"
+	    	vertFocusAnimationStyle="fixedFocus"
+	    	drawFocusFeedbackOnTop="true"
+	    	drawFocusFeedback="true" />
+
+	    <DescriptionHeader
+	    	id="description_header"
+	    	width="1100"
+	    	height="150"
+	    	translation="[90,60]" />
+
+		<Registry
+	    	id="registry" />
+
+	    <AvocadoApi
+	    	id="avocado_api" />
+
+	    <Dialog
+	   		id="dialog"
+	   		visible="false" />
+
+	</children>
+
+	<interface>
+
+		<field id="do_exit" type="boolean" alwaysNotify="true" />
+		<field id="podcast_selected" type="integer" alwaysNotify="true" />
+
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/HomeScreen.brs" />
+	<script type="text/brightscript" uri="pkg:/components/Util.brs" />
+
+</component>

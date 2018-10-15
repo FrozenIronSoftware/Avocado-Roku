@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
+<component name="AvocadoApi" extends="Task">
+
+	<interface>
+		<!-- Fields -->
+		<field id="result" type="assocarray" alwaysNotify="true" />
+		<field id="cancel" type="boolean" alwaysNotify="true" />
+		<field id="get_podcasts" type="array" alwaysNotify="true" />
+		<field id="get_popular_podcasts" type="array" alwaysNotify="true" />
+		<field id="get_user_favorites" type="array" alwaysNotify="true" />
+		<field id="get_user_recents" type="array" alwaysNotify="true" />
+		<field id="create_anonymous_user" type="array" alwaysNotify="true" />
+		<field id="auth" type="assocarray" alwaysNotify="true" />
+		<field id="get_episodes" type="array" alwaysNotify="true" />
+        <field id="get_user_info" type="string" alwaysNotify="true" />
+		<!-- Functions -->
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/AvocadoApi.brs" />
+
+</component>
