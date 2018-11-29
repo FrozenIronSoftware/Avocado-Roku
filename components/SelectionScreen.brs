@@ -161,6 +161,10 @@ function on_podcast_data(event as object) as void
                 if m.episode_id > -1
                     offset = fix((m.episode_id + 1) / m.ITEMS_PER_PAGE) - 1
                 end if
+                m.max_pages = int(podcast.episodes / m.ITEMS_PER_PAGE)
+                if podcast.episodes / m.ITEMS_PER_PAGE - m.max_pages > 0
+                    m.max_pages += 1
+                end if
             end if
         end for
     end if
@@ -179,16 +183,12 @@ function on_episode_data(event as object) as void
     if type(episodes) <> "roArray"
         error("error_api_fail", 3001)
     else
-        m.max_pages = int(episodes.count() / m.ITEMS_PER_PAGE)
-        if episodes.count() / m.ITEMS_PER_PAGE - m.max_pages > 0
-            m.max_pages += 1
-        end if
         for each episode in episodes
             if type(episode) = "roAssociativeArray"
                 ' Set item details
                 item = m.label_list.content.createChild("ContentNode")
                 item.title = episode.title
-                item.episode_id = episode.episode_id
+                item.episodeNumber = episode.episode_id.toStr()
                 item.description = episode.description
                 ' Set Icon
                 icon = "pkg:/locale/default/images/icon_empty.png"
@@ -243,7 +243,7 @@ end function
 function on_episode_selected(event as object) as void
     episode = m.label_list.content.getChild(event.getData())
     if episode <> invalid
-        m.top.episode_selected = [m.podcast_id, episode.episode_id]
+        m.top.episode_selected = [m.podcast_id, val(episode.episodeNumber, 0)]
     end if
 end function
 
@@ -263,7 +263,7 @@ function on_previous_selected(event = invalid as object) as void
         m.loading_page = true
         m.avocado_api.get_episodes = [{
             id: m.podcast_id,
-            offset: m.page_index,
+            offset: m.page_index * m.ITEMS_PER_PAGE,
             limit: m.ITEMS_PER_PAGE,
             order: "descending"
         }, "on_episode_data"]
@@ -278,7 +278,7 @@ function on_next_selected(event = invalid as object) as void
         m.loading_page = true
         m.avocado_api.get_episodes = [{
             id: m.podcast_id,
-            offset: m.page_index,
+            offset: m.page_index * m.ITEMS_PER_PAGE,
             limit: m.ITEMS_PER_PAGE,
             order: "descending"
         }, "on_episode_data"]
@@ -289,7 +289,7 @@ end function
 function load_currently_focused_episode() as void
     episode = m.label_list.content.getChild(m.label_list.itemFocused)
     if episode <> invalid
-        m.top.episode_selected = [m.podcast_id, episode.episode_id]
+        m.top.episode_selected = [m.podcast_id, val(episode.episodeNumber, 0)]
     end if
 end function
 

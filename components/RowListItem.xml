@@ -2,16 +2,17 @@
 <!-- Copyright (C) 2018 Rolando Islas. All Rights Reserved. -->
 <component name="RowListItem" extends="Group">
 	<children>
-	
-		<Poster 
+
+		<Poster
 			id="image"
-			width="200"
-			height="200"
+			width="300"
+			height="300"
 			loadingBitmapUri="pkg:/locale/default/images/poster_loading.png"
-    		failedBitmapUri="pkg:/locale/default/images/poster_error.png" />
-		
+    		failedBitmapUri="pkg:/locale/default/images/poster_error.png"
+            loadDisplayMode="scaleToFit" />
+
 	</children>
-	
+
 	<interface>
 		<!-- Fields -->
 		<field id="itemContent" type="node" alwaysNotify="true" />

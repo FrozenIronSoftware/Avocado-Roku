@@ -31,8 +31,8 @@ function resize() as void
     m.title.width = m.top.width
     m.title.height = m.top.height * .25
     m.description.width = m.top.width
-    m.description.height = m.top.height * .75
-    m.description.translation = [0, m.title.height]
+    m.description.height = m.top.height * .7
+    m.description.translation = [0, m.title.height + m.title.height * .05]
 end function
 
 ' Handle title string change

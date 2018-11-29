@@ -75,6 +75,10 @@
             	<source>message_loading</source>
             	<target>Loading</target>
            	</trans-unit>
+            <trans-unit id="18">
+            	<source>title_popular</source>
+            	<target>Popular</target>
+           	</trans-unit>
         </body>
     </file>
 </xliff>

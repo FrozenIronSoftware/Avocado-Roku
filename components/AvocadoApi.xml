@@ -14,6 +14,7 @@
 		<field id="auth" type="assocarray" alwaysNotify="true" />
 		<field id="get_episodes" type="array" alwaysNotify="true" />
         <field id="get_user_info" type="string" alwaysNotify="true" />
+        <field id="get_ad_server" type="string" alwaysNotify="true" />
 		<!-- Functions -->
 	</interface>
 

@@ -19,6 +19,7 @@ function init() as void
     m.video = m.top.findNode("video")
     m.audio = m.top.findNode("audio")
     m.image = m.top.findNode("image")
+    m.podcast_artwork = m.top.findNode("podcast_artwork")
     ' Events
     m.registry.observeField("result", "on_callback")
     m.avocado_api.observeField("result", "on_callback")
@@ -33,7 +34,6 @@ function init() as void
     m.episode_id = invalid
     m.continuous_play = false
     m.media_type = invalid
-    m.podcast_artwork = invalid
     m.nielsen_genre = invalid
     m.exit_after_message = false
     m.show_ads = true ' Do not set on start. This is set only when there is auth data
@@ -75,14 +75,25 @@ end function
 
 ' Ready the screen
 function on_start_requested(event as object) as void
-    m.podcast_id = event.getData()[0]
-    m.episode_id = event.getData()[1]
+    load_episode(event.getData()[0], event.getData()[1])
+end function
+
+' Reset and load an episode
+' Entry point
+function load_episode(podcast_id, episode_id) as void
+    m.podcast_id = podcast_id
+    m.episode_id = episode_id
     m.continuous_play = false
     m.media_type = invalid
-    m.podcast_artwork = invalid
+    m.podcast_artwork.uri = ""
     m.nielsen_genre = invalid
     m.exit_after_message = false
-    'm.background.uri = "pkg:/locale/default/images/audio_background.png"
+    m.ad_container.visible = false
+    m.image.visible = false
+    m.video.visible = false
+    m.podcast_title.visible = false
+    m.episode_title.visible = false
+    m.podcast_artwork.visible = false
     ' Start registry read
     m.registry.read_multi = [
         m.global.REG_AVOCADO,
@@ -93,7 +104,8 @@ end function
 
 ' Stop the screen
 function on_stop_requested(event as object) as void
-    ' TODO stop media
+    m.audio.control = "stop"
+    m.video.control = "stop"
     m.avocado_api.cancel = true
     m.dialog.visible = false
 end function
@@ -124,15 +136,10 @@ function on_podcast_data(event as object) as void
         for each podcast in podcasts
             if type(podcast) = "roAssociativeArray" and podcast.id = m.podcast_id
                 m.podcast_title.text = podcast.title
-                m.podcast_artwork = podcast.image
+                m.podcast_artwork.uri = podcast.image
             end if
         end for
     end if
-
-    ' TODO remove
-    m.podcast_title.title = "Stuff You Should Know - HowStuffWorks"
-    m.podcast_artwork = "http://sixgun.org/files/linuxoutlaws.jpg"
-    ' TODO remove
 
     ' Get episode data
     m.avocado_api.get_episodes = [{
@@ -162,25 +169,17 @@ function on_episode_data(event as object) as void
                 m.media_type = m.TYPE_IMAGE
             end if
             m.episode_title.text = episode.title
-            m.media_url = episode.media_url
+            m.media_url = episode.url
             m.artwork = episode.image
-            m.nielsen_genre = episode.nielsen_genre
-            duration = episode.duration
+            m.nielsen_genre = episode.genre
             description = episode.description
         else
             m.exit_after_message = true
-            show_message("error_api_fail", 4002)
+            error("error_api_fail", 4002)
             m.top.ready = true
             return
         end if
     end if
-
-    ' TODO remove
-    m.media_type = m.TYPE_AUDIO
-    m.media_url = "http://feeds.rolandoislas.com/~r/TeamFightPodcast/~5/NdNKXMEgRqI/Team%20Fight%20Episode%2020.mp3"
-    m.artwork.uri = "https://podcast.rolandoislas.com/podcast/team_fight/icon_180.png"
-    m.nielsen_genre = "GV"
-    ' TODO remove
 
     preload_media(description)
     if m.show_ads
@@ -205,7 +204,7 @@ function preload_media(description = invalid as string) as void
     media.description = description
     ' Audio
     if m.media_type = m.TYPE_AUDIO
-        'media.streamFormat =
+        media.streamFormat = "mp3"
         m.audio.content = media
         m.audio.control = "prebuffer"
     ' Video
@@ -224,6 +223,11 @@ function play_media() as void
     if m.media_type = m.TYPE_AUDIO
         ' TODO Set audio controls focus
         m.audio.control = "play"
+        ' Show audio elements
+        m.episode_title.visible = true
+        m.podcast_title.visible = true
+        m.podcast_artwork.visible = true
+        m.background.uri = "pkg:/locale/default/images/audio_background.png"
     ' Video
     else if m.media_type = m.TYPE_VIDEO
         m.video.setFocus(true)
@@ -236,7 +240,13 @@ function play_media() as void
 end function
 
 ' Show ads
-function show_ads(media_name = "" as string, category = "GV" as string, duration = 0 as integer) as void
+' @param media_name string podcast name
+' @param category string nielsen genre
+' @param duration episode duration
+function show_ads(media_name = "" as dynamic, category = "GV" as dynamic, duration = 0 as dynamic) as void
+    if media_name = invalid media_name = ""
+    if category = invalid category = "GV"
+    if duration = invalid duration = 0
     m.ads.view = m.ad_container
     m.ads.show_ads = [media_name, category, duration]
     m.ad_container.visible = true
@@ -276,5 +286,5 @@ function on_authentication_data(event as object) as void
     auth = event.getData()
     m.avocado_api.auth = auth
     ' Check for premium status
-    m.show_ads = type(auth) = "roAssociativeArray" and auth.account_level >= 2
+    m.show_ads = type(auth) <> "roAssociativeArray" or auth.account_level < 2
 end function

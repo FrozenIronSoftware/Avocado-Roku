@@ -4,25 +4,16 @@
 
 	<children>
 
-		<!--<Overhang
-			id="header"
-			color="0x19171c"
-	    	showClock="true"
-	    	clockColor="0xffffff"
-	    	logoUri="pkg:/locale/default/images/overhang_logo_hd.png"
-	    	title=""
-	    	titleColor="0xffffff" />-->
-
 	    <RowList
 	    	id="row_list"
-	    	translation="[90,210]"
+	    	translation="[90,315]"
 	    	itemComponentName="RowListItem"
-	    	itemSize="[1100,200]"
-	    	itemSpacing="[0,60]"
+	    	itemSize="[1740,300]"
+	    	itemSpacing="[0,90]"
 	    	numRows="2"
-	    	rowItemSize="[[200,200]]"
-	    	rowItemSpacing="[[30,0]]"
-	    	rowLabelOffset="[[0,15]]"
+	    	rowItemSize="[[300,300]]"
+	    	rowItemSpacing="[[45,0]]"
+	    	rowLabelOffset="[[0,22.5]]"
 	    	showRowLabel="[false, true]"
 	    	showRowCounter="[false, true]"
 	    	rowFocusAnimationStyle="fixedFocusWrap"
@@ -32,8 +23,8 @@
 
 	    <DescriptionHeader
 	    	id="description_header"
-	    	width="1100"
-	    	height="150"
+	    	width="1740"
+	    	height="225"
 	    	translation="[90,60]" />
 
 		<Registry

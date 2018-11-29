@@ -7,20 +7,43 @@
 		<Poster
 	    	id="background"
 	    	uri=""
-	    	width="1280"
-	    	height="720"
+	    	width="1920"
+	    	height="1080"
 	    	loadDisplayMode="scaleToFill" />
 
 		<Overhang
 			id="header"
-			color="0x19171c"
+			color="0x74a292"
 	    	showClock="true"
 	    	clockColor="0xffffff"
 	    	logoUri="pkg:/locale/default/images/overhang_logo_hd.png"
 	    	title=""
 	    	titleColor="0xffffff" />
 
-	    <ScrollingLabel
+		<Video
+			id="video" />
+
+		<Audio
+			id="audio" />
+
+		<Poster
+			id="image"
+			width="1920"
+			height="1080"
+			loadDisplayMode="scaleToFit"
+			loadingBitmapUri="pkg:/locale/default/images/poster_loading.png"
+    		failedBitmapUri="pkg:/locale/default/images/poster_error.png" />
+
+        <Poster
+			id="podcast_artwork"
+			width="300"
+			height="300"
+            translation="[90,390]"
+			loadDisplayMode="scaleToFit"
+			loadingBitmapUri="pkg:/locale/default/images/poster_loading.png"
+    		failedBitmapUri="pkg:/locale/default/images/poster_error.png" />
+
+        <ScrollingLabel
 	    	id="episode_title"
 	    	color="0xffffff"
 			font="font:LargeBoldSystemFont"
@@ -36,31 +59,17 @@
 			vertAlign="top"
 			height="50" />
 
-		<Video
-			id="video" />
-
-		<Audio
-			id="audio" />
-
-		<Poster
-			id="image"
-			width="1280"
-			height="720"
-			loadDisplayMode="scaleToFit"
-			loadingBitmapUri="pkg:/locale/default/images/poster_loading.png"
-    		failedBitmapUri="pkg:/locale/default/images/poster_error.png" />
-
 		<Rectangle
     		id="ad_container"
     		color="0x000000"
     		visible="false"
-    		width="1280"
-    		height="720">
+    		width="1920"
+    		height="1080">
     		<Poster
 		    	id="ad_container_background"
 		    	uri="pkg:/locale/default/images/splash_hd.png"
-		    	width="1280"
-		    	height="720"
+		    	width="1920"
+		    	height="1080"
 		    	loadDisplayMode="scaleToFill" />
     	</Rectangle>
 

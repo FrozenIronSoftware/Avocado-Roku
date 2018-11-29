@@ -9,6 +9,11 @@ function init() as void
     m.http = createHttp()
     ' Variables
     m.callback = invalid
+    m.request_url = invalid
+    m.request_data = invalid
+    m.request_type = invalid
+    m.cache_uuid = invalid
+    m.rerequest_count = invalid
     ' Events
     m.top.observeField("cancel", m.port)
     m.top.observeField("get_podcasts", m.port)
@@ -36,6 +41,11 @@ function run() as void
             if msg.getField() = "cancel"
                 m.http.asyncCancel()
                 m.callback = invalid
+                m.request_url = invalid
+                m.request_data = invalid
+                m.request_type = invalid
+                m.cache_uuid = invalid
+                m.rerequest_count = invalid
             else if msg.getField() = "auth"
                 authenticate(params)
             else if msg.getField() = "get_podcasts"
@@ -92,6 +102,33 @@ function on_http_response(event as object) as void
     ' Canceled
     if event.getResponseCode() = -10001 or event.getFailureReason() = "Cancelled"
         return
+    ' Page has not been cached. Retry after a delay
+    else if event.getResponseCode() = 218
+        device_info = createObject("roDeviceInfo")
+        uuid = device_info.getRandomUuid()
+        m.cache_uuid = uuid
+        sleep(1000)
+        if m.cache_uuid <> invalid and m.cache_uuid = uuid
+            request_url = m.request_url
+            if m.rerequest_count = invalid
+                m.rerequest_count = {
+                    url: request_url,
+                    count: 0
+                }
+            end if
+            if (m.rerequest_count.url = request_url and m.rerequest_count.count >= 10)
+                m.rerequest_count = invalid
+            else if m.rerequest_count.url = request_url
+                if request_url.instr("?") > -1
+                    request_url += "&waiting=true"
+                else
+                    request_url += "?waiting=true"
+                end if
+                m.rerequest_count.count += 1
+            end if
+            request(m.request_type, m.request_url, [], m.callback, m.request_data)
+        end if
+        return
     ' Fail
     else if event.getResponseCode() <> 200
         print "HTTP request failed:"
@@ -109,6 +146,9 @@ function on_http_response(event as object) as void
         result: json
     })
     m.callback = invalid
+    m.request_url = invalid
+    m.request_data = invalid
+    m.request_type = invalid
 end function
 
 ' Make an async request, automatically handling the callback result and setting it to
@@ -130,6 +170,9 @@ function request(req as string, request_url as string, params as object, callbac
     end if
     ' Make the HTTP request
     m.callback = callback
+    m.request_url = request_url
+    m.request_data = data
+    m.request_type = req
     if req = "GET"
         get(request_url)
     else if req = "POST"
@@ -221,7 +264,7 @@ function get_episodes(params as object) as void
     passed_params = params[0]
     url_params = []
     if passed_params.id <> invalid
-        url_params.push("id=" + m.http.escape(passed_params.id.toStr()))
+        url_params.push("podcast_id=" + m.http.escape(passed_params.id.toStr()))
     end if
     if passed_params.offset <> invalid
         url_params.push("offset=" + m.http.escape(passed_params.offset.toStr()))
@@ -232,6 +275,9 @@ function get_episodes(params as object) as void
     if passed_params.order <> invalid
         url_params.push("order=" + m.http.escape(passed_params.order.toStr()))
     end if
+    if passed_params.episode <> invalid
+        url_params.push("episode_id=" + m.http.escape(passed_params.episode.toStr()))
+    end if
     request("GET", request_url, url_params, params[1])
 end function
 
@@ -241,4 +287,15 @@ function get_user_info(callback as string) as void
     request_url = m.API + "/user"
     ' Comstruct params
     request("GET", request_url, [], callback)
+end function
+
+' Request ad servers from Avocado's API
+' @param params field event expected to be an event with data being a string callback
+function get_ad_server(params) as void
+    request_url = m.API + "/ad/server"
+    ' Params
+    url_params = [
+        "type=roku"
+    ]
+    request("GET", request_url, url_params, params.getData())
 end function

@@ -12,13 +12,13 @@
 	    	logoUri="pkg:/locale/default/images/overhang_logo_hd.png"
 	    	title=""
 	    	titleColor="0xffffff" />
-	    	
-	    <LabelList 
+
+	    <LabelList
 	    	id="label_list"
 	    	color="0xffffff"
 	    	focusedColor="0xffffff"
-	    	translation="[420,155]"
-	    	itemSize="[770,48]"
+	    	translation="[585,232.5]"
+	    	itemSize="[1155,72]"
 	    	itemSpacing="[0,0]"
 	    	numRows="10"
 	    	focusBitmapUri="pkg:/locale/default/images/list_selection.9.png"
@@ -27,76 +27,76 @@
     			"pkg:/locale/default/images/list_selection.9.png"
     		focusFootprintBlendColor="0xa7b2a2"
     		vertFocusAnimationStyle="floatingFocus" />
-    		
-    	<Label 
+
+    	<Label
 	    	id="message"
 	    	color="0xffffff"
     		font="font:LargeSystemFont"
-    		width="770"
-    		height="30"
-    		translation="[420,345]"
+    		width="1155"
+    		height="45"
+    		translation="[630,517.5]"
     		horizAlign="center"
     		vertAlign="top" />
-	    	
-	    <DescriptionSidebar 
+
+	    <DescriptionSidebar
 	    	id="description_sidebar"
-	    	width="300"
-	    	height="400"
-	    	translation="[90,155]" />
-	    	
-	    <Button 
+	    	width="450"
+	    	height="600"
+	    	translation="[90,232.5]" />
+
+	    <Button
 	    	id="previous"
-	    	maxWidth="30"
-	    	minWidth="30"
-	    	height="30"
-	    	translation="[120,625]"
+	    	maxWidth="45"
+	    	minWidth="45"
+	    	height="45"
+	    	translation="[135,937.5]"
 	    	focusFootprintBitmapUri	="pkg:/locale/default/images/arrow_left.png"
 	    	focusBitmapUri="pkg:/locale/default/images/arrow_left_active.png"
 	    	showFocusFootprint="true"
 	    	iconUri=""
 	    	focusedIconUri="" />
-	    	
-	    <Button 
+
+	    <Button
 	    	id="next"
-	    	maxWidth="30"
-	    	minWidth="30"
-	    	height="30"
-	    	translation="[330,625]"
+	    	maxWidth="45"
+	    	minWidth="45"
+	    	height="45"
+	    	translation="[450,937.5]"
 	    	focusFootprintBitmapUri	="pkg:/locale/default/images/arrow_right.png"
 	    	focusBitmapUri="pkg:/locale/default/images/arrow_right_active.png"
 	    	showFocusFootprint="true"
 	    	iconUri=""
 	    	focusedIconUri="" />
-	    	
-	    <Label 
+
+	    <Label
 	    	id="page"
 	    	color="0xffffff"
     		font="font:LargeBoldSystemFont"
-    		width="30"
-    		height="30"
-    		translation="[225,625]"
+    		width="450"
+    		height="45"
+    		translation="[90,937.5]"
     		horizAlign="center"
     		vertAlign="top" />
-	    	
+
 	    <AvocadoApi
 	    	id="avocado_api" />
-	    	
-	    <Dialog 
+
+	    <Dialog
 	   		id="dialog"
 	   		visible="false" />
-		
+
 	</children>
-	
+
 	<interface>
-		
+
 		<!-- This will be set when an episode has been selected. The
 			 array will contain the podcast id at position 0 and the episode id
 			 at position 1. -->
 		<field id="episode_selected" type="array" alwaysNotify="true" />
-		
+
 	</interface>
-	
+
 	<script type="text/brightscript" uri="pkg:/components/SelectionScreen.brs" />
 	<script type="text/brightscript" uri="pkg:/components/Util.brs" />
-	
+
 </component>
